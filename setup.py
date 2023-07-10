@@ -9,7 +9,7 @@ setup(
     packages=['typetype'],
     entry_points={
         'console_scripts': [
-            'typetype=game.ahmetsgame:callmain'
+            'typetype=typetype.ahmetsgame:callmain'
         ]
     },
     install_requires=[
