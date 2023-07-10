@@ -1,41 +1,36 @@
 # typetype
-Typing game made by Ahmet Ozer
+A Command Line Typing Game by Ahmet Ozer
 
-To install: pip install typetype
-
-To play: typetype
-
-# About
-typetype is a minimalistic command line typing game. I made this game becuase I couldn't find any command line typing games that I liked, so I decided to make one myself. I made this game in 1 week and worked on it during my trip to canada.
-Since it is a minimalistic game, I did not include much text/instructions. In order to see the game's unwritten controls please read the Navigation section before playing the game.
-# Cursor
-If you would like to use the '|' cursor that I made, use the -cursor option when running the game
-# Navigation
-(read this section)
-
-Mode Selection Pages:
-
-use the arrow keys to change the selected game mode
-
-the enter key will select the highlighted option
-
-the delete key will go back to the previous game
-
-the esc key will quit the game (if you are on the first page)
+## Installation
+To install typetype, use the following command:
+ `pip install typetype`
 
 
-Inside The Game:
+## Usage
+To start playing the game, simply run:
+`typetype`
 
-just type to play!
+## Cursor Option
+To use the custom '|' cursor that I made, run the game with the `-cursor` option.
 
-use the esc key to restart the game
+## About
+`typetype` is a minimalistic command line typing game. I made this game becuase I couldn't find any command line typing games that I liked, so I decided to make one myself. I made this game in 1 week and worked on it during my trip to canada. Since it is a minimalistic game, I did not include much text/instructions. In order to see the game's unwritten controls please read the Navigation section before playing the game.
 
-if the time hasn't started yet, press * to return to the menu
+## Controls
+Please read the following instructions to familiarize yourself with the game's controls before playing:
 
-Results/End Page:
+### Mode Selection Pages:
+- Use the arrow keys to navigate and select different game modes.
+- Press the Enter key to confirm the selected mode.
+- Press the Delete key to go back to the previous game.
+- Press the Esc key to quit the game (only applicable on the first page).
 
-you can use the esc key to quit the game
+### Inside The Game:
+- Simply start typing to play the game!
+- Press the Esc key to restart the game.
+- If the timer hasn't started yet, press * to return to the menu.
+
+### Results/End Page:
+- Use the Esc key to quit the game.
 
 
-
-WIP
