@@ -1,7 +1,10 @@
 # typetype
 Typing game made by Ahmet Ozer
+
 To install: pip install typetype
+
 To play: typetype
+
 # About
 typetype is a minimalistic command line typing game. I made this game becuase I couldn't find any command line typing games that I liked, so I decided to make one myself. I made this game in 1 week and worked on it during my trip to canada.
 Since it is a minimalistic game, I did not include much text/instructions. In order to see the game's unwritten controls please read the Navigation section before playing the game.
