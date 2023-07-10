@@ -5,6 +5,7 @@ setup(
     name='typetype',
     version='1.0.0',
     author='Ahmet Ozer',
+    url="https://github.com/ahmet8zer/typetype",
     description='A command line typing game',
     packages=['typetype'],
     entry_points={
