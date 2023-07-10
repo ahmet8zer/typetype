@@ -157,7 +157,7 @@ def start_game(stdscr, choices, cursor):
         
         #start time when the user starts typing for the first time
         if not time_started:
-            #* will return to menu
+            #* will return to menu if the game hasn't started
             if key == 42:
                 return 'm'
             time_started = True
@@ -165,19 +165,19 @@ def start_game(stdscr, choices, cursor):
             start_time = time.time()
         
         
-        #if the delete key is deleted
+        #if the delete key is pressed
         if key == 127:
             #deleting from the current word
             if len(extras[onword])>0:
                 extras[onword] = extras[onword][:-1]
             elif len(new_words[onword])>0:
                 new_words[onword] = new_words[onword][:-1]
-            #move to previous word if its not the first word
+            #move to previous word if the cursor is at the beginning of a word (if its not the first word)
             elif onword>0:
                 onword -= 1
             
                 
-        #esc key restarts the game
+        #esc key restarts the game with the same settings
         elif key == 27:
             return start_game(stdscr, choices, cursor)
         
@@ -190,10 +190,10 @@ def start_game(stdscr, choices, cursor):
                 errors+=1
         #add character to the word that the user is typing
         elif char!=' ':
-            #if the character is wrong add to the errors variable
-            if original_words[onword][len(new_words[onword])] != char:
-                errors+=1
             new_words[onword] = new_words[onword] + char
+            #if the character is wrong: increment the errors variable
+            if original_words[onword][len(new_words[onword])-1] != char:
+                errors+=1
             #if the last word is typed completely correctly, end the game
             if onword == len(original_words)-1 and new_words[onword] == original_words[onword]:
                 status = update_status(status, original_words, new_words, onword)
@@ -218,14 +218,19 @@ def start_game(stdscr, choices, cursor):
     end_time = time.time()-start_time
     #show the user the results on the end screen.
     user_response = end_screen(stdscr, original_words, new_words, extras, end_time, errors, status, timed, choices)
+    #return the user response to main
     return user_response
     
 
-
-
-
-if True:
+#used to call main
+def callmain():
     #this is to take away the escape delay
     os.environ.setdefault('ESCDELAY', '25')
     #run main
     curses.wrapper(main)
+
+
+
+if True:
+    callmain()
+    

@@ -6,20 +6,18 @@ import os
 
 
 
-
+#user selects which game mode they want to play
 def get_game(stdscr):
     active = 1
     while True:
-        #ask the user what game they want to play
         height, width = stdscr.getmaxyx()
         curses.curs_set(0)
         stdscr.clear()
         startheight = int(height/3)
         startheight = 4 if startheight<4 else startheight
         try:
-            stdscr.addstr(1, int((width-4)/2), "type", curses.color_pair(3))
-            stdscr.addstr(2, int((width-4)/2), "ǝdʎʇ", curses.color_pair(4))
-            #stdscr.addstr(5, int((width-len("game modes"))/2), "game modes", curses.color_pair(2))
+            stdscr.addstr(1, int((width-4)/2), "type", curses.color_pair(2))
+            stdscr.addstr(2, int((width-4)/2), "ǝdʎʇ", curses.color_pair(2))
             if active == 1:
                 stdscr.addstr(startheight, int((width-len("timed mode"))/2), "timed mode", curses.color_pair(2))
             else:
@@ -55,7 +53,7 @@ def get_game(stdscr):
         elif key == 259 or key == 260:
             if active>1:
                 active-=1
-        #select
+        #enter
         elif key == 10:
             if active == 1:
                 return 't'
@@ -79,9 +77,8 @@ def get_game(stdscr):
 
 
 
-
+#user selects which difficulty they want
 def get_diff(stdscr, choice):
-    #ask the user what difficulty they want to play
     if 'q' in choice:
         return choice
     active = 1
@@ -143,7 +140,7 @@ def get_diff(stdscr, choice):
         elif key == 259 or key == 260:
             if active>1:
                 active-=1
-        #select
+        #enter
         elif key == 10:
             if active == 1 and (choice == 't' or choice == 'w'):
                 return choice + 'e'
@@ -169,11 +166,10 @@ def get_diff(stdscr, choice):
 
 
 
-
+#get the time or word number that the user wants
 def get_mode(stdscr, choice):
     if 'q' in choice:
         return choice
-    #ask the user what mode they want to play
     active = 1
     active_max = 4 if choice[0]=='t' else 5
     while True:

@@ -13,7 +13,9 @@ def refresh_screen(stdscr, status, original_words, playing_game, new_words, extr
         curses.curs_set(1)
     stdscr.clear()
     cursorplaced = False
+    #get the first word that we have to start at (we only show 2 or 3 lines at a time)
     firstword = find_start_word(stdscr, status, original_words, playing_game, new_words, extras, onword, start_time, timed, cursor)
+    #this is how many lines we're going to display
     linesleft = 3 if firstword!=-1 else 2
     
     #adjust variables according to the screen dimensions
@@ -39,6 +41,7 @@ def refresh_screen(stdscr, status, original_words, playing_game, new_words, extr
     while wordcount<len(original_words):
         
         lettercount = 0
+        #if the cursor is on this word, then take into account the width of the cursor
         if cursor and onword == wordcount:
             cursorwidth = 1
         else:
@@ -174,7 +177,8 @@ def update_status(status, original_words, new_words, onword):
 
 #-------------------------------------------------------------------------------------------
 
-
+#this function will find the word that we have to start displaying from 
+#I want to display one line above and below where the cursor is
 def find_start_word(stdscr, status, original_words, playing_game, new_words, extras, onword, start_time, timed, cursor):
     #hide the cursor and clear the screen
     cursorplaced = False

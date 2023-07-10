@@ -32,6 +32,7 @@ def setup(stdscr, choices):
             chosen = random.choice(lines)[:-1]
     if choices[0] == 'x':
         return chosen
+    
     #timed or words
     last10 = []
     sentence = ""
@@ -50,8 +51,10 @@ def setup(stdscr, choices):
     elif choices[0] == 'w' and choices[2] == '4':
         needed = 100
     
+    #get the need ammount of words from the file
     while len(sentence.split(" "))<needed:
         randomword = random.choice(lines)[:-1]
+        #don't let the same word repeat close to each other
         if randomword in last10:
             continue
         if len(last10) == 10:
@@ -80,6 +83,7 @@ def end_screen(stdscr, original_words, new_words, extras, end_time, errorcount, 
     #if its timed then set the end_time to the time
     if end_time>timed and timed:
         end_time = timed
+    
     #count the number of r's in status
     correct_chars = 0
     i = 0
@@ -133,6 +137,7 @@ def end_screen(stdscr, original_words, new_words, extras, end_time, errorcount, 
         
     if scoreindex != -1:
         old_high = float(lines[scoreindex][:-1])
+        #update the highscore if it is beat
         if wpm > old_high:
             new_high = True
             f = open(os.path.dirname(os.path.dirname(__file__ ))+"/words/highscores.txt", "w")
