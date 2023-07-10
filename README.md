@@ -14,17 +14,26 @@ If you would like to use the '|' cursor that I made, use the -cursor option when
 (read this section)
 
 Mode Selection Pages:
+
 use the arrow keys to change the selected game mode
+
 the enter key will select the highlighted option
+
 the delete key will go back to the previous game
+
 the esc key will quit the game (if you are on the first page)
 
+
 Inside The Game:
+
 just type to play!
+
 use the esc key to restart the game
+
 if the time hasn't started yet, press * to return to the menu
 
 Results/End Page:
+
 you can use the esc key to quit the game
 
 
