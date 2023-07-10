@@ -3,11 +3,11 @@ import sys
 
 setup(
     name='typetype',
-    version='1.0.0',
+    version='1.0.2',
     author='Ahmet Ozer',
     url="https://github.com/ahmet8zer/typetype",
     description='A command line typing game',
-    packages=['typetype'],
+    packages=['typetype','typetype.functions', 'typetype.words'],
     entry_points={
         'console_scripts': [
             'typetype=typetype.ahmetsgame:callmain'
