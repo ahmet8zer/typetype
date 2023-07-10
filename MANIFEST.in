@@ -1,0 +1,2 @@
+include words/*.txt
+include typetype/words/*.txt

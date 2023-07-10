@@ -1,6 +1,11 @@
-from typetype.functions.game_selection import get_game, get_diff, get_mode
-from typetype.functions.setup_results import setup, end_screen
-from typetype.functions.refresh_update import refresh_screen, update_status, find_start_word
+try:
+    from functions.game_selection import get_game, get_diff, get_mode
+    from functions.setup_results import setup, end_screen
+    from functions.refresh_update import refresh_screen, update_status, find_start_word
+except:
+    from typetype.functions.game_selection import get_game, get_diff, get_mode
+    from typetype.functions.setup_results import setup, end_screen
+    from typetype.functions.refresh_update import refresh_screen, update_status, find_start_word
 import curses
 import time
 import random
@@ -231,4 +236,3 @@ def callmain():
     curses.wrapper(main)
 
 
-    
