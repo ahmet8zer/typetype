@@ -13,6 +13,7 @@ import os
 import argparse
 import keyboard
 import ctypes
+import sys
 
 
 def main(stdscr):
@@ -174,8 +175,18 @@ def start_game(stdscr, choices, cursor):
         
         #if the delete key is pressed
         if key == 127 or key == 8:
+            try:
+                if sys.platform == 'win32':
+                    if keyboard.is_pressed('ctrl') or (ctypes.windll.user32.GetKeyState(0x11) & 0x8000):
+                        ctrldown = True
+                    else:
+                        ctrldown = False
+                else:
+                    ctrldown = False
+            except:
+                ctrldown = False
             #if ctrl is also pressed
-            if keyboard.is_pressed('ctrl') or (ctypes.windll.user32.GetKeyState(0x11) & 0x8000):
+            if ctrldown:
                 #delete the whole word plus extras
                 if len(extras[onword])>0:
                     extras[onword] = ''
