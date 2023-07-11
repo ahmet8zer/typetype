@@ -11,7 +11,6 @@ import time
 import random
 import os
 import argparse
-import keyboard
 import ctypes
 import sys
 
@@ -32,7 +31,8 @@ def main(stdscr):
     curses.use_default_colors()
     stdscr.clear()
     #grey
-    curses.init_pair(1, 235, -1)
+    curses.init_color(curses.COLOR_CYAN, 500, 500, 500)
+    curses.init_pair(1, curses.COLOR_CYAN, -1)
     #white
     curses.init_pair(2, curses.COLOR_WHITE, -1)
     #(error)
@@ -177,7 +177,7 @@ def start_game(stdscr, choices, cursor):
         if key == 127 or key == 8:
             try:
                 if sys.platform == 'win32':
-                    if keyboard.is_pressed('ctrl') or (ctypes.windll.user32.GetKeyState(0x11) & 0x8000):
+                    if (ctypes.windll.user32.GetKeyState(0x11) & 0x8000):
                         ctrldown = True
                     else:
                         ctrldown = False
