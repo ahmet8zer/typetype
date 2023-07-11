@@ -155,7 +155,7 @@ def get_diff(stdscr, choice):
             elif active == 3 and (choice == 'x'):
                 return choice + 'l'
         #delete
-        elif key == 127:
+        elif key == 127 or key == 8:
             return get_diff(stdscr, get_game(stdscr))
         
 
@@ -253,7 +253,7 @@ def get_mode(stdscr, choice):
             elif active == 5:
                 return get_mode(stdscr, get_diff(stdscr, choice[:-1]))
         #delete
-        elif key == 127:
+        elif key == 127 or key == 8:
             return get_mode(stdscr, get_diff(stdscr, choice[:-1]))
         
         

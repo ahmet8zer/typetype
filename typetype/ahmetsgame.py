@@ -11,7 +11,8 @@ import time
 import random
 import os
 import argparse
-
+import keyboard
+import ctypes
 
 
 def main(stdscr):
@@ -134,8 +135,8 @@ def start_game(stdscr, choices, cursor):
     #loop that waits for user input
     while True:
         
-        #allow the getch() function to timeout so we can refresh the screen every 0.1 seconds
-        stdscr.timeout(100)
+        #allow the getch() function to timeout so we can refresh the screen every 0.3 seconds
+        stdscr.timeout(300)
         
         #wait for an input key
         key = stdscr.getch()
@@ -157,7 +158,7 @@ def start_game(stdscr, choices, cursor):
         
         #if the key is not a valid character, the delete key, or the esc key: go to the start of the loop
         #127 is the delete key and 27 is the esc key
-        if char not in valid_characters and key!=127 and key!=27:
+        if char not in valid_characters and key!=127 and key!=27 and key!=8:
             continue
         
         
@@ -172,9 +173,23 @@ def start_game(stdscr, choices, cursor):
         
         
         #if the delete key is pressed
-        if key == 127:
+        if key == 127 or key == 8:
+            #if ctrl is also pressed
+            if keyboard.is_pressed('ctrl') or (ctypes.windll.user32.GetKeyState(0x11) & 0x8000):
+                #delete the whole word plus extras
+                if len(extras[onword])>0:
+                    extras[onword] = ''
+                    new_words[onword] = ''
+                elif len(new_words[onword])>0:
+                    new_words[onword] = ''
+                elif onword>0:
+                    #if the word is empty then delete the whole previous word
+                    onword-=1
+                    extras[onword] = ''
+                    new_words[onword] = ''
+            #normal delete key
             #deleting from the current word
-            if len(extras[onword])>0:
+            elif len(extras[onword])>0:
                 extras[onword] = extras[onword][:-1]
             elif len(new_words[onword])>0:
                 new_words[onword] = new_words[onword][:-1]
@@ -235,4 +250,4 @@ def callmain():
     #run main
     curses.wrapper(main)
 
-
+callmain()
