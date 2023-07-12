@@ -19,12 +19,22 @@ def main(stdscr):
     
     #get command line args
     cursor = False
+    lighter = False
+    darker = False
+    
     parser = argparse.ArgumentParser(description='Typing Game')
     parser.add_argument('-cursor', action='store_true', help='Enable cursor mode')
+    parser.add_argument('-lighter', action='store_true', help='Enable lighter characters')
+    parser.add_argument('-darker', action='store_true', help='Enable darker characters')
     args = parser.parse_args()
     if args.cursor:
         #display | cursor
         cursor = True
+    if args.lighter:
+        lighter = True
+    if args.darker:
+        darker = True
+    
     
     #start and setup colors and use the default terminal color as the background
     curses.start_color()
@@ -33,6 +43,10 @@ def main(stdscr):
     #grey
     if sys.platform == 'win32':
         curses.init_pair(1, 240, -1)
+    elif lighter:
+        curses.init_pair(1, 240, -1)
+    elif darker:
+        curses.init_pair(1, 235, -1)
     else:
         curses.init_pair(1, 235, -1)
     #white
