@@ -34,7 +34,7 @@ def main(stdscr):
     if sys.platform == 'win32':
         curses.init_pair(1, 240, -1)
     else:
-        curses.init_pair(1, 235, -1)
+        curses.init_pair(1, 232, -1)
     #white
     curses.init_pair(2, curses.COLOR_WHITE, -1)
     #(error)
@@ -156,10 +156,12 @@ def start_game(stdscr, choices, cursor):
             char = 'NA'
             
         if sys.platform == 'win32':
-            if (ctypes.windll.user32.GetKeyState(0x27) & 0x8000):
-                char = "'"
-            elif (ctypes.windll.user32.GetKeyState(0x22) & 0x8000):
+            if (ctypes.windll.user32.GetKeyState(0xDE) & 0x8000) and (ctypes.windll.user32.GetKeyState(0x10) & 0x8000):
                 char = '"'
+                key = 0
+            elif (ctypes.windll.user32.GetKeyState(0xDE) & 0x8000):
+                char = "'"
+                key = 0
         
         #end the game if the timer has passed the time limit
         if timed!=0 and time_started:
