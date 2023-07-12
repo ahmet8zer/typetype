@@ -10,7 +10,11 @@ To install typetype, use the following command:
 To start playing the game, simply run:
 `typetype`
 
-## Cursor Option
+## Options
+`-lighter` option will make the untyped characters lighter (windows default)
+
+`-darker` option will make the untyped characters darker (mac default)
+
 To use the custom '|' cursor that I made, run the game with the `-cursor` option.
 
 ## About
