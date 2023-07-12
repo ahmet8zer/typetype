@@ -34,7 +34,7 @@ def main(stdscr):
     if sys.platform == 'win32':
         curses.init_pair(1, 240, -1)
     else:
-        curses.init_pair(1, 232, -1)
+        curses.init_pair(1, 235, -1)
     #white
     curses.init_pair(2, curses.COLOR_WHITE, -1)
     #(error)
@@ -277,4 +277,3 @@ def callmain():
     os.environ.setdefault('ESCDELAY', '25')
     #run main
     curses.wrapper(main)
-
