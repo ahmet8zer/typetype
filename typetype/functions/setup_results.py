@@ -9,7 +9,7 @@ def setup(stdscr, choices):
 
     #choose sentence from sentences
     if choices[0] == 'x':
-        lines = open(os.path.dirname(os.path.dirname(__file__ ))+"/words/text.txt").readlines()
+        lines = open(os.path.dirname(os.path.dirname(__file__ ))+"/words/text.txt",'r',encoding='utf-8').readlines()
     elif choices[0] != 'x' and choices[1] == 'e':
         lines = open(os.path.dirname(os.path.dirname(__file__)) +"/words/200words.txt").readlines()
     elif choices[0] != 'x' and choices[1] == 'm':

@@ -248,7 +248,7 @@ def get_mode(stdscr, choice):
                 return choice + '3'
             elif active == 4 and choice[0] == 't':
                 return get_mode(stdscr, get_diff(stdscr, choice[:-1]))
-            elif active == 14 and choice[0] == 'w':
+            elif active == 4 and choice[0] == 'w':
                 return choice + '4'
             elif active == 5:
                 return get_mode(stdscr, get_diff(stdscr, choice[:-1]))

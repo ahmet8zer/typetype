@@ -31,8 +31,10 @@ def main(stdscr):
     curses.use_default_colors()
     stdscr.clear()
     #grey
-    curses.init_color(curses.COLOR_CYAN, 500, 500, 500)
-    curses.init_pair(1, curses.COLOR_CYAN, -1)
+    if sys.platform == 'win32':
+        curses.init_pair(1, 240, -1)
+    else:
+        curses.init_pair(1, 235, -1)
     #white
     curses.init_pair(2, curses.COLOR_WHITE, -1)
     #(error)
@@ -40,7 +42,10 @@ def main(stdscr):
     #(extra)
     #change color red to a greyish salmon color
     curses.init_color(curses.COLOR_RED, 300, 150, 150)
-    curses.init_pair(4, curses.COLOR_RED, -1)
+    if sys.platform == 'win32':
+        curses.init_pair(4, 88, -1)
+    else:
+        curses.init_pair(4, curses.COLOR_RED, -1)
     #magenta
     curses.init_pair(5, curses.COLOR_MAGENTA, -1)
     
@@ -141,10 +146,20 @@ def start_game(stdscr, choices, cursor):
         
         #wait for an input key
         key = stdscr.getch()
+        #if tab+enter is pressed then restart the game (like esc)
+        if sys.platform == 'win32':
+            if (ctypes.windll.user32.GetKeyState(0x09) & 0x8000) and (ctypes.windll.user32.GetKeyState(0x0D) & 0x8000):
+                return start_game(stdscr, choices, cursor)
         try:
             char = chr(key)
         except:
             char = 'NA'
+            
+        if sys.platform == 'win32':
+            if (ctypes.windll.user32.GetKeyState(0x27) & 0x8000):
+                char = "'"
+            elif (ctypes.windll.user32.GetKeyState(0x22) & 0x8000):
+                char = '"'
         
         #end the game if the timer has passed the time limit
         if timed!=0 and time_started:
@@ -261,4 +276,3 @@ def callmain():
     #run main
     curses.wrapper(main)
 
-callmain()

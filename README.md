@@ -28,6 +28,7 @@ Please read the following instructions to familiarize yourself with the game's c
 ### Inside The Game:
 - Simply start typing to play the game!
 - Press the Esc key to restart the game.
+- Press tab+enter to restart the game.
 - If the timer hasn't started yet, press * to return to the menu.
 
 ### Results/End Page:
