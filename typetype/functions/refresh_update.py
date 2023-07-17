@@ -16,7 +16,7 @@ def refresh_screen(stdscr, status, original_words, playing_game, new_words, extr
     #get the first word that we have to start at (we only show 2 or 3 lines at a time)
     firstword = find_start_word(stdscr, status, original_words, playing_game, new_words, extras, onword, start_time, timed, cursor)
     #this is how many lines we're going to display
-    linesleft = 3 if firstword!=-1 else 2
+    linesleft = 3
     
     #adjust variables according to the screen dimensions
     height, width = stdscr.getmaxyx()
