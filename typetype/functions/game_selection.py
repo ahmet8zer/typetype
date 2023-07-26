@@ -12,7 +12,7 @@ def get_game(stdscr):
     while True:
         height, width = stdscr.getmaxyx()
         curses.curs_set(0)
-        stdscr.clear()
+        stdscr.erase()
         startheight = int(height/3)
         startheight = 4 if startheight<4 else startheight
         try:
@@ -88,7 +88,7 @@ def get_diff(stdscr, choice):
         startheight = int(height/3)
         startheight = 4 if startheight<4 else startheight
         curses.curs_set(0)
-        stdscr.clear()
+        stdscr.erase()
         try:
             stdscr.addstr(1, int((width-4)/2), "type", curses.color_pair(2))
             stdscr.addstr(2, int((width-4)/2), "ǝdʎʇ", curses.color_pair(2))
@@ -178,7 +178,7 @@ def get_mode(stdscr, choice):
         startheight = 4 if startheight<4 else startheight
         
         curses.curs_set(0)
-        stdscr.clear()
+        stdscr.erase()
         try:
             stdscr.addstr(1, int((width-4)/2), "type", curses.color_pair(2))
             stdscr.addstr(2, int((width-4)/2), "ǝdʎʇ", curses.color_pair(2))

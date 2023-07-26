@@ -11,7 +11,7 @@ def refresh_screen(stdscr, status, original_words, playing_game, new_words, extr
         curses.curs_set(0)
     else:
         curses.curs_set(1)
-    stdscr.clear()
+    stdscr.erase()
     cursorplaced = False
     #get the first word that we have to start at (we only show 2 or 3 lines at a time)
     firstword = find_start_word(stdscr, status, original_words, playing_game, new_words, extras, onword, start_time, timed, cursor)
