@@ -31,7 +31,7 @@ def setup(stdscr, choices):
         while len(chosen)<=300:
             chosen = random.choice(lines)[:-1]
     if choices[0] == 'x':
-        return chosen
+        return chosen.replace("\\","")
     
     #timed or words
     last10 = []
